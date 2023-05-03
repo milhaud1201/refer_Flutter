@@ -37,12 +37,14 @@ class MyApp extends StatelessWidget {
         showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
             label: 'Home',
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
             label: 'Shop',
+            icon: Icon(Icons.shopping_bag),
+            activeIcon: Icon(Icons.shopping_bag_outlined),
           ),
         ],
         currentIndex: 0,
