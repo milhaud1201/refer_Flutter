@@ -16,10 +16,10 @@ rules:
 * appBarTheme
   * actionsIconTheme
 * textTheme
-  * bodyText2 <- Text()
-  * ListTile <- subtitle1
+  * bodyMedium <- Text() (flutter 3.7.12)
+  * ListTile <- subtitle1 (현재 바뀜)
   * TextButton <- button
-  * AppBar <- headline6
+  * AppBar <- headline6 (현재 바뀜)
 ```dart
 void main() {
   runApp(MaterialApp(

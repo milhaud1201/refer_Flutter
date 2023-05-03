@@ -10,7 +10,7 @@ void main() {
         iconTheme: IconThemeData(color: Colors.black87)
       ),
       textTheme: TextTheme(
-        bodyText2: TextStyle(color: Colors.amber)
+        bodyMedium: TextStyle(color: Colors.amber)
       )
     ),
     home: MyApp(),
