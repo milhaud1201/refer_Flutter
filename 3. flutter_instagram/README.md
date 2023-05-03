@@ -31,3 +31,7 @@ void main() {
   ));
 }
 ```
+<details>
+<summary>C2_exercise1</summary>
+<img src="../assets/images/C2_exercise1.png" width="200"/>
+</details>
