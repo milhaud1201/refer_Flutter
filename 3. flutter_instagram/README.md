@@ -35,3 +35,52 @@ void main() {
 <summary>C2_exercise1</summary>
 <img src="../assets/images/C2_exercise1.png" width="200"/>
 </details>
+
+<br>
+
+* textButtomTheme
+  * style
+    * backgroundColor
+```dart
+ThemeData(
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      primary: Colors.black,
+      backgroundColor: Colors.orange,
+    )
+  ),
+)
+```
+
+### ThemeData() 안의 특정스타일 불러오기
+```dart
+// style.dart
+textTheme: TextTheme(
+        bodyMedium: TextStyle(color: Colors.amber),
+        bodySmall: TextStyle(color: Colors.black)
+  )
+
+// main.dart
+// Textcolor is amber
+body: Text('안녕', style: Theme.of(context).textTheme.bodyMedium,),
+// Textcolor is black
+body: Text('안녕', style:Theme.of(context).textTheme.bodyLarge,),
+```
+
+
+<br>
+
+## import 할 때 변수 중복문제 피하기
+### 1. alias 붙이기
+```dart
+import './style.dart' as style;
+```
+이라고 alias를 붙이고 `./style.dart'`에서의 변수를 쓸 때
+`style.theme`을 불러오면 됩니다.
+
+### 2. _ 언더바 붙이기
+```dart
+// style.dart
+var _var1 = ; 
+```
+변수를 다른 파일에서 쓰기 싫으면 `_변수명_함수명_클래스명`을 붙이면 됩니다.

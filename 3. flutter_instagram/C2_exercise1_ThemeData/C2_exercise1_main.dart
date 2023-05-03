@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
+import './style.dart';
 
 void main() {
   runApp(MaterialApp(
-    theme: ThemeData(
-      appBarTheme: AppBarTheme(
-        backgroundColor: Colors.white,
-        elevation: 1,  // 그림자
-        titleTextStyle: TextStyle(color: Colors.black87, fontSize: 20),
-        iconTheme: IconThemeData(color: Colors.black87)
-      ),
-      textTheme: TextTheme(
-        bodyMedium: TextStyle(color: Colors.amber)
-      )
-    ),
+    theme: theme,
     home: MyApp(),
   ));
 }
@@ -40,7 +31,23 @@ class MyApp extends StatelessWidget {
           )
           ],
       ),
-      body: Text('안녕'),
+      body: Text('안녕', style: Theme.of(context).textTheme.bodyMedium,),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'Shop',
+          ),
+        ],
+        currentIndex: 0,
+        // onTap: _onItemTapped,
+      ),
     );
   }
 }
