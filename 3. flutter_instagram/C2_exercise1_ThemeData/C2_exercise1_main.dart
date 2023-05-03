@@ -8,9 +8,15 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var tab = 0;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,8 @@ class MyApp extends StatelessWidget {
           )
           ],
       ),
-      body: Text('안녕', style: Theme.of(context).textTheme.bodyMedium,),
+      body: [Text('홈', style: Theme.of(context).textTheme.bodyMedium,),
+             Text('쇼핑')][tab],
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -47,8 +54,12 @@ class MyApp extends StatelessWidget {
             activeIcon: Icon(Icons.shopping_bag_outlined),
           ),
         ],
-        currentIndex: 0,
-        // onTap: _onItemTapped,
+        // currentIndex: ,
+        onTap: (i){
+          setState(() {
+            tab = i;
+          });
+        },
       ),
     );
   }
