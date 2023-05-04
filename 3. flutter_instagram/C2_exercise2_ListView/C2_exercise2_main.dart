@@ -17,7 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var tab = 0;
-  var post = Post();
+  var home = Home();
 
   // This widget is the root of your application.
   @override
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
           )
           ],
       ),
-      body: [post,
+      body: [home,
              Text('쇼핑')][tab],
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
@@ -67,8 +67,8 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class Post extends StatelessWidget {
-  const Post({Key? key}) : super(key: key);
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

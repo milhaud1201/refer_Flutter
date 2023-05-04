@@ -85,6 +85,8 @@ var _var1 = ;
 ```
 변수를 다른 파일에서 쓰기 싫으면 `_변수명_함수명_클래스명`을 붙이면 됩니다.
 
+<br>
+
 ## 동적인 UI 만드는 법
 ### 1. 현재 UI의 현재 상태를 저장할 state를 만듭니다.
 ### 2. 그 state에 따라서 현재 UI가 어떻게 보일지 코드짜놓습니다.
@@ -93,5 +95,19 @@ var _var1 = ;
 ## PageView()
 https://youtu.be/J1gE9xvph-A
 
+<details>
+<summary>C2_exercise2</summary>
+<img src="../assets/images/C2_exercise2.png" width="200"/>
+</details>
 
+<br>
 
+## 서버와 데이터 주고받기
+서버는 데이터를 달라고 요청하면 데이터를 주는 간단한 프로그램입니다.  
+
+### Get 요청날리는 법
+http라는 이름의 패키지 설치가 필요합니다. `pubspec.yaml` 파일 열어서
+```yaml
+dependencies:
+  http: ^0.13.4
+```
