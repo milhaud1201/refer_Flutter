@@ -153,11 +153,28 @@ getData() async {
 ```
 
 > JSON -> [], {}   
-JSON은 문자를 읽기 번거롭기 때문에 보통 List나 Map으로 변환해서 씁니다.
+JSON은 문자를 읽기 번거롭기 때문에 보통 List나 Map으로 변환해서 씁니다. 아래 코드에서 `result2[0]['user']` 처럼 이제 문자를 쉽게 가지고 올 수 있습니다. 
 ```dart
 getData() async {
     var result = await http.get(Uri.parse('url'));
     var result2 = jsonDecode(result.body);
-    print(result2);
+    print(result2[0]['user']);
   }
+```
+
+## 에러체크 하는 방법
+서버가 이상하거나 GET요청 실패시 유저에게 요청실패를 안내해줄 수 있습니다.
+```dart
+getData() async {
+  var result = await http.get(
+      Uri.parse('url')
+  );
+  if (result.statusCode == 200) {
+    print( jsonDecode(result.body) );
+  } else {
+    // throw는 콘솔창에 빨간색으로 에러내주는 코드
+    // try, catch 문법으로 모든 에러를 체크할 수 있음
+    throw Exception('요청실패'); 
+  }
+} 
 ```
