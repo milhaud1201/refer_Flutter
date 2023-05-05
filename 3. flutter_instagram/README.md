@@ -228,3 +228,45 @@ class Home extends StatelessWidget{
 서버와 GET요청, POST요청할 일이 많아지면 http 패키지 대신 Dio 패키지 설치해서 사용할 수 있습니다. 
 
 ## 스크롤 위치 측정과 더보기 요청
+스크롤 관련 유용한 함수들이 들어있는 패키지를 import 해줍니다.
+```dart
+import 'package:flutter/rendering.dart';
+```
+
+> 스크롤바 높이 측정하려기 위한 property (Null safety)
+```dart
+class _HomeState extends State<Home> {
+
+  var scroll = ScrollController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    scroll.addListener(() {  // scroll 때마다 계속 측정
+      print(scroll.position.pixels);  // 스크롤바 내린 높이
+      print(scroll.position.maxScrollExtent); // 스크롤바 최대 높이
+      print(scroll.position.userScrollDirection);
+    });
+  }
+}
+```
+
+이제 스크롤바 높이를 측정하려면 
+```dart
+class _HomeState extends State<Home> {
+
+  var scroll = ScrollController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    scroll.addListener(() {  // scroll 때마다 계속 측정
+      if (scroll.position.pixels == scroll.position.maxScrollExtent) {
+        print('같음');
+      }
+    });
+  }
+}
+```
