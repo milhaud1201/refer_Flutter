@@ -140,15 +140,21 @@ android는 android/app/src/main/AndroidManifest.xml 파일 들어가서
 ```dart
 // main.dart
 // MyApp 위젯이 로드될 때 실행
-getData() async {
-    var result = await http.get(Uri.parse('url'));
-    print(result.body);
-  }
 
-  @override
-  void initState() {
-    super.initState();
-    getData();
+// data라는 state 함수
+var data = [];
+
+  getData() async {
+    var result = await http.get(Uri.parse('url'));
+    if (result.statusCode == 200) {
+    var json = jsonDecode(result.body);
+    setState(() {
+      data = json;  // data라는 state를 만들고 거기에 저장하는 코드
+      print(data);
+    });
+    } else {
+      throw Exception('error');
+    }
   }
 ```
 
@@ -178,3 +184,38 @@ getData() async {
   }
 } 
 ```
+이러한 것을 팝업 메시지를 통해서 안내할 수 있습니다.
+* Toast - https://pub.dev/packages/fluttertoast
+* SnackBar - https://docs.flutter.dev/cookbook/design/snackbars
+
+<br>
+
+#### 숫자가 포함된 문자열 식의 값 출력
+```dart
+Text("좋아요 ${data[index]['likes']}"),
+Text(data[index]['user']),
+Text(data[index]['content'])
+```
+* https://dart.dev/guides/language/numbers
+
+### 서버에서 데이터 도착 전에 쓰면 에러나는 것 방지 (null check)
+간단하게 if문을 써서 `data.isNotEmpty`면 ListView를 실행하게 만들면 됩니다.
+```dart
+class Home extends StatelessWidget{
+  const Home ({Key? key, this.data}) 
+  final data;
+  Widget build(BuildContext context){
+
+    if (data.isNotEmpty){
+      return ListView.builder(생략);
+    } else {
+      return CircularProgressIndicator();
+    }
+  }
+}
+```
+
+<details>
+<summary>C2_exercise3</summary>
+<img src="../assets/images/C2_exercise3.png" width="200"/>
+</details>
