@@ -103,11 +103,61 @@ https://youtu.be/J1gE9xvph-A
 <br>
 
 ## 서버와 데이터 주고받기
-서버는 데이터를 달라고 요청하면 데이터를 주는 간단한 프로그램입니다.  
+서버는 데이터를 달라고 요청하면 데이터를 주는 간단한 프로그램입니다.
+### 1. method는 GET/POST 택 1  
+* GET: 데이터 읽고 싶을 때
+* POST: 데이터 보내고 싶을 때
+### 2. url 기입
+
+<br>
 
 ### Get 요청날리는 법
 http라는 이름의 패키지 설치가 필요합니다. `pubspec.yaml` 파일 열어서
 ```yaml
+// pubspec.yaml
 dependencies:
   http: ^0.13.4
+```
+추가하고 `pub get`을 눌러서 설치합니다.
+
+`main.dart`파일에 들어가서 맨 위에
+```dart
+// main.dart
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+```
+패키지를 import합니다. dart:convert는 JSON -> 일반자료형 변환을 도와주는 패키지입니다.  
+
+android는 android/app/src/main/AndroidManifest.xml 파일 들어가서
+```xml
+<uses-permission android:name="android.permission.INTERNET" /> 
+```
+<application> 이전에 다음과 같이 코드를 추가합니다. 이 코드는 인터넷 사용을 허락받는 코드입니다.
+
+> 그렇다면 GET요청은 언제 요청해야할까요?   
+보통 내 앱이 로드되면 바로 GET 요청을 합니다.
+
+```dart
+// main.dart
+// MyApp 위젯이 로드될 때 실행
+getData() async {
+    var result = await http.get(Uri.parse('url'));
+    print(result.body);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+```
+
+> JSON -> [], {}   
+JSON은 문자를 읽기 번거롭기 때문에 보통 List나 Map으로 변환해서 씁니다.
+```dart
+getData() async {
+    var result = await http.get(Uri.parse('url'));
+    var result2 = jsonDecode(result.body);
+    print(result2);
+  }
 ```
