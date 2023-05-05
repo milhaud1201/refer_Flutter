@@ -170,6 +170,8 @@ getData() async {
 
 ## 에러체크 하는 방법
 서버가 이상하거나 GET요청 실패시 유저에게 요청실패를 안내해줄 수 있습니다.
+* 서버가 다운되었거나
+* 요청경로가 이상하거나
 ```dart
 getData() async {
   var result = await http.get(
@@ -199,7 +201,7 @@ Text(data[index]['content'])
 * https://dart.dev/guides/language/numbers
 
 ### 서버에서 데이터 도착 전에 쓰면 에러나는 것 방지 (null check)
-간단하게 if문을 써서 `data.isNotEmpty`면 ListView를 실행하게 만들면 됩니다.
+if문을 써서 `data.isNotEmpty`면 ListView를 실행하게 만들면 됩니다.
 ```dart
 class Home extends StatelessWidget{
   const Home ({Key? key, this.data}) 
@@ -219,3 +221,10 @@ class Home extends StatelessWidget{
 <summary>C2_exercise3</summary>
 <img src="../assets/images/C2_exercise3.png" width="200"/>
 </details>
+
+<br>
+
+### Dio 패키지 설치
+서버와 GET요청, POST요청할 일이 많아지면 http 패키지 대신 Dio 패키지 설치해서 사용할 수 있습니다. 
+
+## 스크롤 위치 측정과 더보기 요청
